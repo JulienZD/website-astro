@@ -5,6 +5,7 @@ export interface Props {
   title?: string;
   home?: boolean;
   description?: string;
+  mainClass?: string;
 }
 
 const DEFAULT_TITLE = 'Julien Zapata Duque';
@@ -16,6 +17,7 @@ const {
   title = DEFAULT_TITLE,
   description = DEFAULT_DESCRIPTION,
   home,
+  mainClass,
 } = Astro.props;
 
 const headTitle =
@@ -41,7 +43,7 @@ const headTitle =
   </head>
   <body>
     <Header />
-    <main class:list={{ container: !home }}>
+    <main class:list={[{ container: !home }, mainClass]}>
       <slot />
     </main>
     <footer class="mt-auto py-3 pr-4 text-right">

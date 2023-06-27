@@ -1,0 +1,34 @@
+---
+import Layout from '@/layouts/Layout.astro';
+
+import { getCollection } from 'astro:content';
+
+const projects = await getCollection('projects');
+
+const slugs = projects.map((project) => project.slug);
+---
+
+<Layout title="404" mainClass="h-full">
+  <div class="flex h-full flex-col justify-center text-center">
+    <div>
+      <h1 style={{ color: 'unset' }}>This page does not exist</h1>
+      <a href="/" class="mt-12">Go back home</a>
+    </div>
+
+    <div class="mt-12">
+      <button
+        id="randomProject"
+        class="rounded-lg border border-secondary p-4 text-secondary transition-colors hover:bg-secondary hover:text-primary"
+        >Or check out a random project</button
+      >
+      <script define:vars={{ slugs }}>
+        const randomProjectBtn = document.getElementById('randomProject');
+        randomProjectBtn?.addEventListener('click', () => {
+          const randomSlug = slugs[Math.floor(Math.random() * slugs.length)];
+          window.location.href = `/projects/${randomSlug}`;
+        });
+      </script>
+    </div>
+  </div>
+</Layout>
+
