@@ -1,0 +1,23 @@
+---
+import ProjectsComponent from '@components/Projects.astro';
+import Layout from '@layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const allProjects = await getCollection('projects');
+
+const projectsData = allProjects
+  .map(({ data, slug }) => {
+    return {
+      ...data,
+      slug,
+    };
+  })
+  .sort((a, b) => a.order - b.order);
+
+const description =
+  "All of the projects I've worked on during my career as a software engineer.";
+---
+
+<Layout title="Projects" {description}>
+  <ProjectsComponent projects={projectsData} />
+</Layout>

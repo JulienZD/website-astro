@@ -1,15 +1,27 @@
 ---
-import Layout from '@layouts/Layout.astro';
 import About from '@components/AboutSection.astro';
-// import Projects from '@components/Projects';
+import Projects from '@components/Projects.astro';
+import Layout from '@layouts/Layout.astro';
 // import Contact from '@components/Contact';
-// import { getStoriesData } from '@lib/stories';
-// import { StoryMeta } from '../types';
-// const projectsData = getStoriesData(true);
+import { getCollection } from 'astro:content';
+
+const allProjects = await getCollection(
+  'projects',
+  ({ data }) => data.onHomepage
+);
+
+const projectsData = allProjects
+  .map(({ data, slug }) => {
+    return {
+      ...data,
+      slug,
+    };
+  })
+  .sort((a, b) => a.order - b.order);
 ---
 
 <Layout home>
   <About />
-  <!-- <Projects projects={projectsData} projectsRef={projectsRef} />  -->
+  <Projects projects={projectsData} animate />
   <!-- <Contact /> -->
 </Layout>

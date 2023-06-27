@@ -1,0 +1,48 @@
+---
+import { ChevronRightIcon } from 'astro-feather';
+
+export interface Props {
+  title: string;
+  description: string;
+  image: string;
+  href: string;
+  linkText?: string;
+}
+
+const {
+  title,
+  description,
+  image,
+  href,
+  linkText = 'View project',
+} = Astro.props;
+---
+
+<article
+  class="group relative mt-4 flex min-h-full cursor-pointer flex-col lg:max-w-lg"
+>
+  <div
+    style={{ backgroundImage: `url(${image})` }}
+    class="h-72 rounded-b rounded-t-xl bg-cover bg-top transition-transform duration-[250ms] group-hover:scale-[1.02] group-focus:scale-[1.02]"
+  >
+  </div>
+
+  <h3 class="mt-4 text-secondary">{title}</h3>
+
+  <p class="!mb-0 mt-4">{description}</p>
+  <p class="!mb-0 mt-4 inline-flex items-center uppercase text-secondary">
+    <a {href} aria-label={`Read more about ${title}`} class="no-underline">
+      {linkText}
+    </a>
+    <ChevronRightIcon size={16} />
+  </p>
+</article>
+
+<style>
+  /* Make the entire card clickable */
+  a::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+</style>

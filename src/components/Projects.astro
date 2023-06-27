@@ -1,0 +1,41 @@
+---
+import type { Project } from '@/schemas/project';
+import ProjectsGrid from '@components/projects/ProjectGrid.astro';
+
+export interface Props {
+  projects: (Project & { slug: string })[];
+  animate?: boolean;
+}
+
+const { projects, animate = false } = Astro.props;
+---
+
+<div
+  id="projects"
+  class:list={['container mt-24 lg:mt-0', { 'animate-slideUp': animate }]}
+>
+  <h2 class="mb-4 text-4xl">Projects</h2>
+  <p>
+    There's never a time when I'm not working on something. Take a look at my
+    recent endeavors.
+  </p>
+  <p>
+    Note: This list isn't up-to-date. Check my{' '}
+    <a
+      href="https://github.com/JulienZD/"
+      class="link-animated-hover"
+      target="_blank"
+    >
+      Github</a
+    >
+    to see what I'm up to.
+  </p>
+  <ProjectsGrid projects={projects.slice(0, 4)} />
+  {
+    projects.length > 4 && (
+      <a href="/projects" class="!px-0">
+        View all projects
+      </a>
+    )
+  }
+</div>

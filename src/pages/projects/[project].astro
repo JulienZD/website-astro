@@ -1,0 +1,67 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { renderMarkdownToHtml } from '@/lib/remark/parse-md';
+import InfoBlock from '@components/InfoBlock.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+
+  return projects.map((project) => ({
+    params: { project: project.slug },
+    props: { project },
+  }));
+}
+
+export interface Props {
+  project: CollectionEntry<'projects'>;
+}
+
+const { project } = Astro.props;
+const { Content } = await project.render();
+
+const { data } = project;
+
+const {
+  image,
+  title,
+  stack,
+  description,
+  summary: possibleMarkdownSummary,
+  repository,
+} = data;
+
+const renderedSummary = await renderMarkdownToHtml(
+  possibleMarkdownSummary ?? description
+);
+---
+
+<Layout>
+  <h1 class="animate-slideUp">{title}</h1>
+  <div class="my-8 max-w-4xl" set:html={renderedSummary} />
+  <div class="my-8 flex flex-row gap-x-24">
+    <InfoBlock title="Stack">
+      {stack?.map((tech) => <p class="my-0.5 first:mt-0 last:mb-0">{tech}</p>)}
+    </InfoBlock>
+    <InfoBlock title="Code">
+      {
+        repository ? (
+          <a href={repository} target="_blank">
+            Repository
+          </a>
+        ) : (
+          <p class="my-0">Not available</p>
+        )
+      }
+    </InfoBlock>
+  </div>
+  {
+    image && (
+      <img src={image} alt="" width={1024} height={576} class="rounded-t-xl" />
+    )
+  }
+
+  <div class="mt-12">
+    <Content />
+  </div>
+</Layout>
