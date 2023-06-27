@@ -11,6 +11,9 @@ dependencies:
   '@astrojs/tailwind':
     specifier: ^4.0.0
     version: 4.0.0(astro@2.7.0)(tailwindcss@3.3.2)
+  '@fontsource/overpass':
+    specifier: ^5.0.3
+    version: 5.0.3
   astro:
     specifier: ^2.7.0
     version: 2.7.0(sharp@0.32.1)
@@ -690,6 +693,10 @@ packages:
     resolution: {integrity: sha512-s2UHCoiXfxMvmfzqoN+vrQ84ahUSYde9qNO1MdxmoEhyHWsfmwOpFlwYV+ePJEVc7gFnATGUi376WowX1N7tFg==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
+
+  /@fontsource/overpass@5.0.3:
+    resolution: {integrity: sha512-OKCfEGJzS1RwPoA/Ox0m2T0yX0NGHnxSmpxkODrx41A/LRlvQiPlOGFVMdKjk7ywtN8TYs/PWYvMy/9umy+h2Q==}
+    dev: false
 
   /@humanwhocodes/config-array@0.11.10:
     resolution: {integrity: sha512-KVVjQmNUepDVGXNuoRRdmmEjruj0KfiGSbS8LVc12LMsWDQzRXJ0qdhN8L8uUigKpfEHRhlaQFY0ib1tnUbNeQ==}

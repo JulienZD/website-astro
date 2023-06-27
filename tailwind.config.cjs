@@ -1,4 +1,7 @@
-/* global module */
+/* global module, require */
+// eslint-disable-next-line @typescript-eslint/no-var-requires, @typescript-eslint/no-unsafe-call
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
@@ -28,6 +31,9 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ['Overpass', ...defaultTheme.fontFamily.sans],
+      },
       colors: {
         primary: 'var(--color-primary)',
         secondary: {

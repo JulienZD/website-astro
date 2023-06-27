@@ -1,5 +1,6 @@
 ---
 import Header from '@components/Header.astro';
+import '@fontsource/overpass';
 
 export interface Props {
   title?: string;
@@ -63,8 +64,6 @@ const headTitle =
 </html>
 
 <style is:global>
-  @import url('https://fonts.googleapis.com/css2?family=Overpass&display=swap');
-
   @tailwind base;
   @tailwind components;
   @tailwind utilities;
@@ -126,10 +125,6 @@ const headTitle =
     @apply flex flex-col bg-primary;
 
     color: var(--color-text);
-
-    font-family: 'Overpass', 'Source Sans Pro', -apple-system,
-      BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
-      sans-serif;
   }
 
   br {
