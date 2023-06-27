@@ -1,3 +1,7 @@
+---
+import { Picture } from '@astrojs/image/components';
+---
+
 <div
   class="relative float-right hidden h-[650px] animate-slideLeft bg-cover bg-left-center bg-no-repeat lg:block lg:w-[600px] xl:w-[900px] xl:bg-center"
   style={{
@@ -7,14 +11,13 @@
 >
 </div>
 <div class="container block lg:hidden">
-  <picture>
-    <source srcset="/hero-og.webp" type="image/webp" />
-    <img
-      class="animate-slideUp rounded-t-xl"
-      src="/hero-og.jpg"
-      alt=""
-      height={360}
-      decoding="async"
-    />
-  </picture>
+  <Picture
+    src={import('../../public/hero-og.webp')}
+    widths={[320, 640, 960]}
+    width={960}
+    height={360}
+    sizes="(max-width: 960px) 100vw, 960px"
+    alt=""
+    class="animate-slideUp rounded-t-xl"
+  />
 </div>
