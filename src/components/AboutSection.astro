@@ -1,0 +1,96 @@
+---
+import Hero from '@components/Hero.astro';
+import Highlight from '@components/Highlight.astro';
+import Socials from '@components/Socials.astro';
+import { ChevronDownIcon, ChevronRightIcon } from 'astro-feather';
+import { AGE } from '@lib/constants';
+---
+
+<div class="lg:h-screen">
+  <Hero />
+  <article class="container lg:pr-[600px]">
+    <h1
+      class="mb-4 flex flex-col tracking-normal md:whitespace-nowrap md:text-6xl lg:mb-12"
+    >
+      <span class="text-[#acacac]">Hi, my name is</span>
+      <Highlight>Julien Zapata Duque</Highlight>
+    </h1>
+    <Socials />
+    <p>
+      I'm a {AGE}-year-old software developer from The Netherlands. My current
+      focus lies in web development. I'm currently working at <a
+        href="https://hoorayhr.io"
+        target="_blank">HoorayHR</a
+      >.
+    </p>
+    <p>
+      I'm passionate about all things software development. I'm always reading
+      and learning about new subjects in my free time. In college I've learned
+      to make Java applications and do full-stack web development with .NET
+      Core. In my free time I've learned technologies like React, TypeScript and
+      Node.js. Have a look below to see what I've worked on.
+    </p>
+    <a href="/about" class="mt-8" aria-label="Read more about me">
+      <span class="flex items-center">
+        More about me <ChevronRightIcon size={16} />
+      </span>
+    </a>
+  </article>
+  <div class="container mt-16 hidden lg:block">
+    <button id="scroll">
+      <Highlight>
+        <div class="flex items-end text-xl">
+          <span class="mr-2">Scroll down</span>
+          <ChevronDownIcon
+            customClasses="motion-safe:animate-bounce"
+            size={24}
+          />
+        </div>
+      </Highlight>
+    </button>
+  </div>
+</div>
+
+<script>
+  const scrollButton = document.getElementById('scroll');
+
+  scrollButton?.addEventListener('click', () => {
+    const scrollToEl = document.getElementById('projects');
+    scrollToEl?.scrollIntoView({ behavior: 'smooth' });
+  });
+</script>
+
+<style>
+  article > *,
+  h1 > * {
+    @apply animate-slideUp opacity-0;
+  }
+
+  h1 > *:nth-child(1) {
+    animation-delay: 0s;
+  }
+  h1 > *:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  article > *:nth-child(1) {
+    animation-delay: 0.4s;
+  }
+  article > *:nth-child(2) {
+    animation-delay: 0.6s;
+  }
+  article > *:nth-child(3) {
+    animation-delay: 0.8s;
+  }
+  article > *:nth-child(4) {
+    animation-delay: 1s;
+  }
+  article > *:nth-child(5) {
+    animation-delay: 1.2s;
+  }
+
+  button {
+    @apply animate-slideUp opacity-0;
+    animation-delay: 1.3s;
+  }
+</style>

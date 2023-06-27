@@ -1,0 +1,16 @@
+---
+export interface Props {
+  href: string;
+  text: string;
+  class?: string;
+  title?: string;
+}
+
+const { href, text, class: className = '', title } = Astro.props;
+
+const baseClass = 'first:ml-0 last:mr-0 mx-2';
+---
+
+<a {href} class:list={[baseClass, className]} title={title ?? text}>
+  {text}
+</a>

@@ -1,0 +1,20 @@
+<div
+  class="relative float-right hidden h-[650px] animate-slideLeft bg-cover bg-left-center bg-no-repeat lg:block lg:w-[600px] xl:w-[900px] xl:bg-center"
+  style={{
+    backgroundImage: 'url(hero.jpg)',
+    clipPath: 'polygon(calc(30% - 10vw) 0, 100% 0, 100% 100%, 45% 100%)',
+  }}
+>
+</div>
+<div class="container block lg:hidden">
+  <picture>
+    <source srcset="/hero-og.webp" type="image/webp" />
+    <img
+      class="animate-slideUp rounded-t-xl"
+      src="/hero-og.jpg"
+      alt=""
+      height={360}
+      decoding="async"
+    />
+  </picture>
+</div>

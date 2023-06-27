@@ -1,42 +1,134 @@
 ---
+import Header from '@components/Header.astro';
+
 export interface Props {
-  title: string;
+  title?: string;
+  home?: boolean;
   description?: string;
 }
 
-const { title, description = 'hello' } = Astro.props;
+const DEFAULT_TITLE = 'Julien Zapata Duque';
+
+const DEFAULT_DESCRIPTION =
+  "For the past few years I've been playing around with various technologies. I'm eager to learn new things and am always on the lookout for a new challenge.";
+
+const {
+  title = DEFAULT_TITLE,
+  description = DEFAULT_DESCRIPTION,
+  home,
+} = Astro.props;
+
+const headTitle =
+  title === DEFAULT_TITLE ? title : `${title} | Julien Zapata Duque`;
 ---
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <title>{headTitle}</title>
+    <meta property="og:title" content={headTitle} />
+    <meta name="description" content={description} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/hero-og.jpg" />
+    <meta property="og:url" content="https://jzd.me" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#071625" />
+    <link rel="icon" href="/favicon.ico" />
   </head>
   <body>
-    <slot />
+    <Header />
+    <main class:list={{ container: !home }}>
+      <slot />
+    </main>
+    <footer class="mt-auto py-3 pr-4 text-right">
+      <div class="flex justify-end gap-4">
+        <a href="https://colors.jzd.me/" target="_blank">
+          Preview Color Combinations
+        </a>
+
+        <a href="https://github.com/JulienZD/website" target="_blank">
+          Source
+        </a>
+      </div>
+    </footer>
   </body>
 </html>
+
 <style is:global>
+  @import url('https://fonts.googleapis.com/css2?family=Overpass&display=swap');
+
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+
+  @layer base {
+    body {
+      @apply overflow-x-hidden tracking-wide;
+    }
+
+    p {
+      @apply my-4;
+    }
+
+    h1 {
+      @apply text-4xl text-secondary;
+    }
+
+    h2 {
+      @apply text-3xl text-secondary;
+    }
+
+    h3 {
+      @apply text-2xl;
+    }
+
+    a,
+    a:hover {
+      @apply inline-block rounded text-secondary no-underline transition-colors duration-75 ease-linear;
+    }
+
+    a:not(.no-underline)::after {
+      @apply relative top-0.5 mx-auto my-0 block h-0.5 w-full origin-center rounded bg-secondary transition-transform duration-150 ease-linear;
+      transform: scaleX(0);
+      content: '';
+    }
+
+    .group:hover a:not(.no-underline)::after,
+    .group:focus a:not(.no-underline)::after,
+    a:not(.no-underline):hover::after,
+    a:not(.no-underline):focus::after {
+      transform: scaleX(1);
+    }
+  }
+
   :root {
-    --accent: 124, 58, 237;
-    --accent-gradient: linear-gradient(
-      45deg,
-      rgb(var(--accent)),
-      #da62c4 30%,
-      white 60%
-    );
+    --color-bg: #071625;
+    --color-text: #acacac;
+    --color-link: #0c2640;
+    --color-primary: #071625;
+    --color-secondary: #d49f1b;
   }
-  html {
-    font-family: system-ui, sans-serif;
-    background-color: #f6f6f6;
+
+  html,
+  body {
+    height: 100% !important;
   }
-  code {
-    font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-      DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+
+  body {
+    @apply flex flex-col bg-primary;
+
+    color: var(--color-text);
+
+    font-family: 'Overpass', 'Source Sans Pro', -apple-system,
+      BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+      sans-serif;
+  }
+
+  br {
+    @apply mb-4;
   }
 </style>

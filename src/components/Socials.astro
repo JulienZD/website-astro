@@ -1,0 +1,40 @@
+---
+import { GithubIcon, LinkedinIcon } from 'astro-feather';
+
+const socialClass =
+  'mx-4 first:ml-0 last:mr-0 focus-visible:ring-2 focus-visible:ring-secondary-dark hover:text-[#acacac] transition-colors duration-200 no-underline';
+---
+
+<div class="my-4 flex">
+  <a
+    class={socialClass}
+    href="https://github.com/JulienZD"
+    target="_blank"
+    aria-label="View my GitHub"
+    title="View my GitHub"
+  >
+    <GithubIcon />
+  </a>
+  <a
+    class={socialClass}
+    href="https://linkedin.com/in/julienzapataduque/"
+    target="_blank"
+    aria-label="Connect with me on LinkedIn"
+    title="Connect with me on LinkedIn"
+  >
+    <LinkedinIcon />
+  </a>
+</div>
+
+<style>
+  div > * {
+    @apply animate-slideUp opacity-0;
+  }
+
+  div > *:nth-child(1) {
+    animation-delay: 0.3s;
+  }
+  div > *:nth-child(2) {
+    animation-delay: 0.4s;
+  }
+</style>
