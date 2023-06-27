@@ -11,10 +11,7 @@ const graduationDate = Intl.DateTimeFormat('en-US', {
 }).format(GRADUATION_DATE);
 ---
 
-<Layout
-  {title}
-  description={`I'm a ${AGE}-year-old software developer from The Netherlands.`}
->
+<Layout {title}>
   <h1 class="animate-slideUp">{title}</h1>
   <img
     src="/hero-og.jpg"
