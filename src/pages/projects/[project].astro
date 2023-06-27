@@ -57,11 +57,24 @@ const renderedSummary = await renderMarkdownToHtml(
   </div>
   {
     image && (
-      <img src={image} alt="" width={1024} height={576} class="rounded-t-xl" />
+      <img
+        src={image}
+        alt=""
+        width={1024}
+        height={576}
+        class="max-h-[750px] rounded-xl object-cover object-top"
+      />
     )
   }
 
-  <div class="mt-12">
+  <div id="content" class="mt-12">
     <Content />
   </div>
 </Layout>
+
+<style>
+  #content :global(ul) {
+    list-style: disc;
+    padding-left: 1.5rem;
+  }
+</style>
