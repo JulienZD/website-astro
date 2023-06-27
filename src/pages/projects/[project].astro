@@ -36,7 +36,7 @@ const renderedSummary = await renderMarkdownToHtml(
 );
 ---
 
-<Layout>
+<Layout {title} {description} {image}>
   <h1 class="animate-slideUp">{title}</h1>
   <div class="my-8 max-w-4xl" set:html={renderedSummary} />
   <div class="my-8 flex flex-row gap-x-24">
