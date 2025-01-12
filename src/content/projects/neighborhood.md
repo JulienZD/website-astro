@@ -2,7 +2,7 @@
 title: 'Neighborhood app'
 description: 'A social networking service for neighborhoods - School project'
 image: '/neighborhood-app.png'
-order: 4
+order: 5
 stack: [C#, .NET Core 3.1, MySQL, Bootstrap]
 ---
 

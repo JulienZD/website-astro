@@ -4,7 +4,7 @@ description: 'An easy way to track movies and shows to watch by yourself or with
 summary: "A friend and I had a long list of movies we wanted to watch together. We tracked these in a shared Google Sheet, but this quickly became tedious. We wanted a way to easily add movies to the list, and to be able to mark them as watched. This is how the idea for [W2tch](https://w2tch.vercel.app) was born."
 image: '/watchlist.jpg'
 onHomepage: true
-order: 1
+order: 2
 stack: [Next.js, tRPC, Prisma, TailwindCSS, NextAuth]
 repository: https://github.com/JulienZD/w2tch
 ---
