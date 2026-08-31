@@ -44,9 +44,10 @@ both packages ship a `tsc`. The scripts above never rely on it — `check:fast`
 calls the aliased package by path.
 
 **`pnpm-workspace.yaml` is not a workspace declaration.** It carries the
-`allowBuilds` allow-list that pnpm 10+ requires for dependency build scripts.
-The empty `packages` field only exists because Vercel builds with pnpm 9, which
-refuses to read the file without it.
+`allowBuilds` allow-list that pnpm 10+ requires for dependency build scripts,
+which pnpm 11 reads from this file only. The empty `packages` field is there so
+pnpm 9 can still read the file: Vercel only supports pnpm up to 10 natively and
+falls back to 9 unless `ENABLE_EXPERIMENTAL_COREPACK=1` is set on the project.
 
 **Formatting is split by file type.** oxfmt owns `.ts`, `.json`, `.css`, `.md`
 and friends; it has no `.astro` support yet, so Prettier with
