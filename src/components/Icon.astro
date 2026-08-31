@@ -1,0 +1,26 @@
+---
+import { ICON_PATHS, type IconName } from '@lib/icons';
+
+export type Props = {
+  name: IconName;
+  size?: number;
+  class?: string;
+};
+
+const { name, size = 24, class: className } = Astro.props;
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  class:list={['feather', `feather-${name}`, className]}
+  width={size}
+  height={size}
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+  set:html={ICON_PATHS[name]}
+/>

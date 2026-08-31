@@ -1,0 +1,13 @@
+# Not a workspace — this repo has one package. The file exists because pnpm 11
+# reads `allowBuilds` from here and nowhere else (package.json is ignored).
+#
+# `packages` is only required by pnpm 9, which refuses to read this file
+# without it. Vercel builds with pnpm 11 via Corepack, so this line is a
+# fallback: Vercel drops to pnpm 9 whenever ENABLE_EXPERIMENTAL_COREPACK is
+# unset, including on any environment the variable was not added to.
+packages: []
+
+# pnpm 10+ makes dependency build scripts opt-in.
+allowBuilds:
+  esbuild: true
+  sharp: true

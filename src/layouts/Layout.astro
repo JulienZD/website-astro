@@ -1,14 +1,15 @@
 ---
 import Header from '@components/Header.astro';
 import '@fontsource/overpass';
+import '@/styles/global.css';
 
-export interface Props {
+export type Props = {
   title?: string;
   home?: boolean;
   description?: string;
   mainClass?: string;
   image?: string;
-}
+};
 
 const DEFAULT_TITLE = 'Julien Zapata Duque';
 
@@ -27,7 +28,7 @@ const headTitle =
   title === DEFAULT_TITLE ? title : `${title} | Julien Zapata Duque`;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -43,7 +44,7 @@ const headTitle =
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#071625" />
     <link rel="icon" href="/favicon.ico" />
-    <script defer src="/_vercel/insights/script.js"></script>
+    <script is:inline defer src="/_vercel/insights/script.js"></script>
   </head>
   <body>
     <Header />
@@ -63,72 +64,3 @@ const headTitle =
     </footer>
   </body>
 </html>
-
-<style is:global>
-  @tailwind base;
-  @tailwind components;
-  @tailwind utilities;
-
-  @layer base {
-    body {
-      @apply overflow-x-hidden tracking-wide;
-    }
-
-    p {
-      @apply my-4;
-    }
-
-    h1 {
-      @apply text-4xl text-secondary;
-    }
-
-    h2 {
-      @apply text-3xl text-secondary;
-    }
-
-    h3 {
-      @apply text-2xl;
-    }
-
-    a,
-    a:hover {
-      @apply inline-block rounded text-secondary no-underline transition-colors duration-75 ease-linear;
-    }
-
-    a:not(.no-underline)::after {
-      @apply relative top-0.5 mx-auto my-0 block h-0.5 w-full origin-center rounded bg-secondary transition-transform duration-150 ease-linear;
-      transform: scaleX(0);
-      content: '';
-    }
-
-    .group:hover a:not(.no-underline)::after,
-    .group:focus a:not(.no-underline)::after,
-    a:not(.no-underline):hover::after,
-    a:not(.no-underline):focus::after {
-      transform: scaleX(1);
-    }
-  }
-
-  :root {
-    --color-bg: #071625;
-    --color-text: #acacac;
-    --color-link: #0c2640;
-    --color-primary: #071625;
-    --color-secondary: #d49f1b;
-  }
-
-  html,
-  body {
-    height: 100% !important;
-  }
-
-  body {
-    @apply flex flex-col bg-primary;
-
-    color: var(--color-text);
-  }
-
-  br {
-    @apply mb-4;
-  }
-</style>

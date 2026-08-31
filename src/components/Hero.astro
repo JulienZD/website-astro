@@ -1,9 +1,10 @@
 ---
-import { Picture } from '@astrojs/image/components';
+import heroImage from '@/assets/hero-og.webp';
+import { Image } from 'astro:assets';
 ---
 
 <div
-  class="relative float-right hidden h-[650px] animate-slideLeft bg-cover bg-left-center bg-no-repeat lg:block lg:w-[600px] xl:w-[900px] xl:bg-center"
+  class="relative float-right hidden h-[650px] animate-slide-left bg-cover bg-left-center bg-no-repeat lg:block lg:w-[600px] xl:w-[900px] xl:bg-center"
   style={{
     backgroundImage: 'url(hero.jpg)',
     clipPath: 'polygon(calc(30% - 10vw) 0, 100% 0, 100% 100%, 45% 100%)',
@@ -11,13 +12,13 @@ import { Picture } from '@astrojs/image/components';
 >
 </div>
 <div class="container block lg:hidden">
-  <Picture
-    src={import('../../public/hero-og.webp')}
+  <Image
+    src={heroImage}
     widths={[320, 640, 960]}
     width={960}
     height={360}
     sizes="(max-width: 960px) 100vw, 960px"
     alt=""
-    class="animate-slideUp rounded-t-xl"
+    class="animate-slide-up rounded-t-xl"
   />
 </div>

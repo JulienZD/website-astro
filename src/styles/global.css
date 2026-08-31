@@ -1,0 +1,124 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans:
+    'Overpass', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
+
+  --color-primary: #071625;
+  --color-secondary: #d49f1b;
+  --color-secondary-dark: #997415;
+
+  /* Tailwind v4 pairs a line height with every text-* utility. The v3 config
+     this replaced declared bare font sizes, so opt back out of the pairing. */
+  --text-lg--line-height: normal;
+  --text-xl--line-height: normal;
+  --text-2xl--line-height: normal;
+  --text-3xl--line-height: normal;
+  --text-4xl--line-height: normal;
+  --text-6xl--line-height: normal;
+
+  --animate-slide-up: slide-up 1s 0.2s forwards;
+  --animate-slide-left: slide-left 1s 0.4s forwards;
+
+  @keyframes slide-up {
+    0% {
+      transform: translateY(15px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0px);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-left {
+    0% {
+      transform: translateX(100px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0px);
+      opacity: 1;
+    }
+  }
+}
+
+/* v3's `container.center` / `container.padding` options are gone in v4. */
+@utility container {
+  margin-inline: auto;
+  padding-inline: 1rem;
+
+  @variant lg {
+    padding-inline: 0.5rem;
+  }
+}
+
+@utility bg-left-center {
+  background-position: -375px center;
+}
+
+:root {
+  --color-text: #acacac;
+}
+
+@layer base {
+  /* v4's Preflight drops the pointer cursor from buttons. */
+  button:not(:disabled),
+  [role='button']:not(:disabled) {
+    cursor: pointer;
+  }
+
+  body {
+    @apply overflow-x-hidden tracking-wide;
+  }
+
+  p {
+    @apply my-4;
+  }
+
+  h1 {
+    @apply text-4xl text-secondary;
+  }
+
+  h2 {
+    @apply text-3xl text-secondary;
+  }
+
+  h3 {
+    @apply text-2xl;
+  }
+
+  a,
+  a:hover {
+    @apply inline-block rounded text-secondary no-underline transition-colors duration-75 ease-linear;
+  }
+
+  a:not(.no-underline)::after {
+    @apply relative top-0.5 mx-auto my-0 block h-0.5 w-full origin-center rounded bg-secondary transition-transform duration-150 ease-linear;
+    transform: scaleX(0);
+    content: '';
+  }
+
+  .group:hover a:not(.no-underline)::after,
+  .group:focus a:not(.no-underline)::after,
+  a:not(.no-underline):hover::after,
+  a:not(.no-underline):focus::after {
+    transform: scaleX(1);
+  }
+}
+
+html,
+body {
+  height: 100% !important;
+}
+
+body {
+  @apply flex flex-col bg-primary;
+
+  color: var(--color-text);
+}
+
+br {
+  @apply mb-4;
+}

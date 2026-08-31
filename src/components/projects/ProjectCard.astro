@@ -1,13 +1,13 @@
 ---
-import { ChevronRightIcon } from 'astro-feather';
+import Icon from '@components/Icon.astro';
 
-export interface Props {
+export type Props = {
   title: string;
   description: string;
   image: string;
   href: string;
   linkText?: string;
-}
+};
 
 const {
   title,
@@ -23,18 +23,18 @@ const {
 >
   <div
     style={{ backgroundImage: `url(${image})` }}
-    class="h-72 rounded-b rounded-t-xl bg-cover bg-top transition-transform duration-[250ms] group-hover:scale-[1.02] group-focus:scale-[1.02]"
+    class="h-72 rounded-t-xl rounded-b bg-cover bg-top transition-transform duration-[250ms] group-hover:scale-[1.02] group-focus:scale-[1.02]"
   >
   </div>
 
   <h3 class="mt-4 text-secondary">{title}</h3>
 
-  <p class="!mb-0 mt-4">{description}</p>
-  <p class="!mb-0 mt-4 inline-flex items-center uppercase text-secondary">
+  <p class="mt-4 !mb-0">{description}</p>
+  <p class="mt-4 !mb-0 inline-flex items-center text-secondary uppercase">
     <a {href} aria-label={`Read more about ${title}`} class="no-underline">
       {linkText}
     </a>
-    <ChevronRightIcon size={16} />
+    <Icon name="chevronRight" size={16} />
   </p>
 </article>
 

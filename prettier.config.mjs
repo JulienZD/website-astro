@@ -1,10 +1,9 @@
-/* global module, require */
-/** @type {import('prettier').Config} */
-module.exports = {
-  plugins: [
-    require.resolve('prettier-plugin-astro'),
-    require.resolve('prettier-plugin-tailwindcss'),
-  ],
+/**
+ * Prettier only handles `.astro` files here; oxfmt owns everything else.
+ * @type {import('prettier').Config}
+ */
+export default {
+  plugins: ['prettier-plugin-astro', 'prettier-plugin-tailwindcss'],
   overrides: [
     {
       files: '*.astro',
@@ -21,4 +20,5 @@ module.exports = {
   endOfLine: 'lf',
   arrowParens: 'always',
   bracketSpacing: true,
+  tailwindStylesheet: './src/styles/global.css',
 };

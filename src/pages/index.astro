@@ -2,24 +2,12 @@
 import About from '@components/AboutSection.astro';
 import Projects from '@components/Projects.astro';
 import Layout from '@layouts/Layout.astro';
-import { getCollection } from 'astro:content';
+import { getSortedProjects } from '@lib/projects';
 
-const allProjects = await getCollection(
-  'projects',
-  ({ data }) => data.onHomepage
-);
-
-const projectsData = allProjects
-  .map(({ data, slug }) => {
-    return {
-      ...data,
-      slug,
-    };
-  })
-  .sort((a, b) => a.order - b.order);
+const projects = await getSortedProjects(({ data }) => data.onHomepage);
 ---
 
 <Layout home>
   <About />
-  <Projects projects={projectsData} animate />
+  <Projects {projects} animate />
 </Layout>

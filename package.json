@@ -1,41 +1,40 @@
 {
   "name": "astro-portfolio",
-  "type": "module",
   "version": "0.0.1",
+  "type": "module",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro check && tsc --noEmit && astro build",
+    "build": "pnpm run check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "prettier": "prettier --write --plugin-search-dir=. .",
-    "lint": "eslint --ext .ts,.cjs,.astro src"
+    "check": "astro check",
+    "check:fast": "node ./node_modules/typescript-native/bin/tsc --noEmit",
+    "format": "oxfmt . && prettier --write \"**/*.astro\"",
+    "format:check": "oxfmt --check . && prettier --check \"**/*.astro\"",
+    "lint": "oxlint"
   },
   "dependencies": {
-    "@astrojs/image": "^0.17.1",
-    "@astrojs/tailwind": "^4.0.0",
-    "@fontsource/overpass": "^5.0.3",
-    "astro": "^2.7.0",
-    "astro-feather": "^1.0.0",
-    "remark": "^14.0.3",
-    "remark-html": "^15.0.2",
-    "sharp": "^0.32.1",
-    "tailwindcss": "^3.0.24"
+    "@astrojs/markdown-satteri": "^0.3.8",
+    "@fontsource/overpass": "^5.3.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.2.9",
+    "satteri": "^0.10.5",
+    "sharp": "^0.35.4",
+    "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
-    "@types/marked": "^5.0.0",
-    "@types/unist": "^2.0.6",
-    "@typescript-eslint/eslint-plugin": "^5.60.1",
-    "@typescript-eslint/parser": "^5.60.1",
-    "eslint": "^8.43.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-astro": "^0.27.2",
-    "eslint-plugin-jsx-a11y": "^6.7.1",
-    "eslint-plugin-prettier": "^4.2.1",
-    "prettier": "^2.8.8",
-    "prettier-plugin-astro": "^0.10.0",
-    "prettier-plugin-tailwindcss": "^0.3.0",
-    "typescript": "^5.1.0"
+    "@astrojs/check": "^0.9.10",
+    "oxfmt": "^0.65.0",
+    "oxlint": "^1.80.0",
+    "prettier": "^3.9.6",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-tailwindcss": "^0.8.1",
+    "typescript": "^6.0.3",
+    "typescript-native": "npm:typescript@^7.0.2"
   },
-  "packageManager": "pnpm@9.15.2+sha512.93e57b0126f0df74ce6bff29680394c0ba54ec47246b9cf321f0121d8d9bb03f750a705f24edc3c1180853afd7c2c3b94196d0a3d53d3e069d9e2793ef11f321"
+  "engines": {
+    "node": ">=24"
+  },
+  "packageManager": "pnpm@11.24.0+sha512.bd27e345e976dcb0be0b7a1228217b049a817e21b1f355c90dbe7dc46671895a8bc1e6d06c24554505ea93ea0b45f489a27ec1bfbc8de6a9659fca0f16fa0000"
 }
