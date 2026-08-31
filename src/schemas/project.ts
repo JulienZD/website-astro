@@ -1,4 +1,4 @@
-import { z } from 'astro:content';
+import { z } from 'astro/zod';
 
 export const projectSchema = z.object({
   title: z.string(),
@@ -8,8 +8,6 @@ export const projectSchema = z.object({
   onHomepage: z.boolean().default(false),
   order: z.number().default(0),
   stack: z.array(z.string()).optional(),
-  repository: z.string().url().optional(),
+  repository: z.url().optional(),
   linkText: z.string().optional(),
 });
-
-export type Project = z.infer<typeof projectSchema>;

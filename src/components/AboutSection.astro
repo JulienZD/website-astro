@@ -1,8 +1,8 @@
 ---
 import Hero from '@components/Hero.astro';
 import Highlight from '@components/Highlight.astro';
+import Icon from '@components/Icon.astro';
 import Socials from '@components/Socials.astro';
-import { ChevronDownIcon, ChevronRightIcon } from 'astro-feather';
 import { AGE } from '@lib/constants';
 ---
 
@@ -10,7 +10,7 @@ import { AGE } from '@lib/constants';
   <Hero />
   <article class="container lg:pr-[600px]">
     <h1
-      class="mb-4 flex flex-col tracking-normal md:whitespace-nowrap md:text-6xl lg:mb-12"
+      class="mb-4 flex flex-col tracking-normal md:text-6xl md:whitespace-nowrap lg:mb-12"
     >
       <span class="text-[#acacac]">Hi, my name is</span>
       <Highlight>Julien Zapata Duque</Highlight>
@@ -30,7 +30,7 @@ import { AGE } from '@lib/constants';
     </p>
     <a href="/about" class="mt-8" aria-label="Read more about me">
       <span class="flex items-center">
-        More about me <ChevronRightIcon size={16} />
+        More about me <Icon name="chevronRight" size={16} />
       </span>
     </a>
   </article>
@@ -39,9 +39,10 @@ import { AGE } from '@lib/constants';
       <Highlight>
         <div class="flex items-end text-xl">
           <span class="mr-2">Scroll down</span>
-          <ChevronDownIcon
-            customClasses="motion-safe:animate-bounce"
+          <Icon
+            name="chevronDown"
             size={24}
+            class="motion-safe:animate-bounce"
           />
         </div>
       </Highlight>
@@ -59,9 +60,11 @@ import { AGE } from '@lib/constants';
 </script>
 
 <style>
+  @reference '../styles/global.css';
+
   article > *,
   h1 > * {
-    @apply animate-slideUp opacity-0;
+    @apply animate-slide-up opacity-0;
   }
 
   h1 > *:nth-child(1) {
@@ -88,7 +91,7 @@ import { AGE } from '@lib/constants';
   }
 
   button {
-    @apply animate-slideUp opacity-0;
+    @apply animate-slide-up opacity-0;
     animation-delay: 1.3s;
   }
 </style>

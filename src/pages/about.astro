@@ -1,7 +1,8 @@
 ---
-import { Picture } from '@astrojs/image/components';
+import heroImage from '@/assets/hero-og.webp';
 import Layout from '@layouts/Layout.astro';
 import { AGE, GRADUATION_DATE } from '@lib/constants';
+import { Image } from 'astro:assets';
 
 const title = 'About me';
 
@@ -13,9 +14,9 @@ const graduationDate = Intl.DateTimeFormat('en-US', {
 ---
 
 <Layout {title}>
-  <h1 class="animate-slideUp">{title}</h1>
-  <Picture
-    src={import('../../public/hero-og.webp')}
+  <h1 class="animate-slide-up">{title}</h1>
+  <Image
+    src={heroImage}
     widths={[320, 640, 960]}
     width={640}
     height={360}
@@ -48,10 +49,10 @@ const graduationDate = Intl.DateTimeFormat('en-US', {
     At the age of 21 I decided to go to college to study Software Engineering.
     It was there where my love for software development has really made its
     home. After a{' '}
-    <a href="/projects/neighborhood">full-stack web development project</a>
-    I quickly fell in love with everything surrounding it. Since then I've spent
-    my spare time learning TypeScript, and various fullstack technologies, such as
-    Next.js and SvelteKit.
+    <a href="/projects/neighborhood">full-stack web development project</a>{' '}
+    I quickly fell in love with everything surrounding it. Since then I've spent my
+    spare time learning TypeScript, and various fullstack technologies, such as Next.js
+    and SvelteKit.
   </p>
   <p>I graduated on {graduationDate} 🎉</p>
 

@@ -1,11 +1,10 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-
 import { getCollection } from 'astro:content';
 
 const projects = await getCollection('projects');
 
-const slugs = projects.map((project) => project.slug);
+const ids = projects.map((project) => project.id);
 ---
 
 <Layout title="404" mainClass="h-full">
@@ -21,14 +20,13 @@ const slugs = projects.map((project) => project.slug);
         class="rounded-lg border border-secondary p-4 text-secondary transition-colors hover:bg-secondary hover:text-primary"
         >Or check out a random project</button
       >
-      <script define:vars={{ slugs }}>
+      <script is:inline define:vars={{ ids }}>
         const randomProjectBtn = document.getElementById('randomProject');
         randomProjectBtn?.addEventListener('click', () => {
-          const randomSlug = slugs[Math.floor(Math.random() * slugs.length)];
-          window.location.href = `/projects/${randomSlug}`;
+          const randomId = ids[Math.floor(Math.random() * ids.length)];
+          window.location.href = `/projects/${randomId}`;
         });
       </script>
     </div>
   </div>
 </Layout>
-

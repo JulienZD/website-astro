@@ -1,24 +1,24 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import { renderMarkdownToHtml } from '@/lib/remark/parse-md';
+import { renderMarkdownToHtml } from '@/lib/markdown/render';
 import InfoBlock from '@components/InfoBlock.astro';
-import { getCollection, type CollectionEntry } from 'astro:content';
+import { getCollection, render, type CollectionEntry } from 'astro:content';
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects');
 
   return projects.map((project) => ({
-    params: { project: project.slug },
+    params: { project: project.id },
     props: { project },
   }));
 }
 
-export interface Props {
+export type Props = {
   project: CollectionEntry<'projects'>;
-}
+};
 
 const { project } = Astro.props;
-const { Content } = await project.render();
+const { Content } = await render(project);
 
 const { data } = project;
 
@@ -37,7 +37,7 @@ const renderedSummary = await renderMarkdownToHtml(
 ---
 
 <Layout {title} {description} {image}>
-  <h1 class="animate-slideUp">{title}</h1>
+  <h1 class="animate-slide-up">{title}</h1>
   <div class="my-8 max-w-4xl" set:html={renderedSummary} />
   <div class="my-8 flex flex-row gap-x-24">
     <InfoBlock title="Stack">
