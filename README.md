@@ -43,6 +43,11 @@ Note that `node_modules/.bin/tsc` resolves to the TypeScript 7 binary, since
 both packages ship a `tsc`. The scripts above never rely on it — `check:fast`
 calls the aliased package by path.
 
+**`pnpm-workspace.yaml` is not a workspace declaration.** It carries the
+`allowBuilds` allow-list that pnpm 10+ requires for dependency build scripts.
+The empty `packages` field only exists because Vercel builds with pnpm 9, which
+refuses to read the file without it.
+
 **Formatting is split by file type.** oxfmt owns `.ts`, `.json`, `.css`, `.md`
 and friends; it has no `.astro` support yet, so Prettier with
 `prettier-plugin-astro` handles those. oxlint lints `.astro` frontmatter and

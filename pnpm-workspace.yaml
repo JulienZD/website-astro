@@ -1,3 +1,9 @@
+# Not a workspace — this repo has one package. The empty `packages` field is
+# here because pnpm 9, which is what Vercel builds with, refuses to read a
+# pnpm-workspace.yaml that omits it.
+packages: []
+
+# pnpm 10+ makes dependency build scripts opt-in.
 allowBuilds:
   esbuild: true
   sharp: true
