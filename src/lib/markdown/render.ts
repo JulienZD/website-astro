@@ -10,9 +10,7 @@ const processor = await createSatteriMarkdownProcessor({
   syntaxHighlight: false,
 });
 
-export const renderMarkdownToHtml = async (
-  markdown: string
-): Promise<string> => {
+export const renderMarkdownToHtml = async (markdown: string): Promise<string> => {
   const { code } = await processor.render(markdown);
 
   return code;

@@ -4,16 +4,10 @@
   "semi": true,
   "tabWidth": 2,
   "useTabs": false,
-  "printWidth": 80,
+  "printWidth": 120,
   "trailingComma": "es5",
   "endOfLine": "lf",
   "arrowParens": "always",
   "bracketSpacing": true,
-  "ignorePatterns": [
-    "dist",
-    ".astro",
-    "public",
-    "pnpm-lock.yaml",
-    "src/content"
-  ]
+  "ignorePatterns": ["dist", ".astro", "public", "pnpm-lock.yaml", "src/content"]
 }
